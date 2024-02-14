@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/alphabet-clash/static/css/main.e628f417.css",
+    "main.js": "/alphabet-clash/static/js/main.d7a06583.js",
+    "static/media/background.png": "/alphabet-clash/static/media/background.7e01ba8bdbce9b9dc396.png",
+    "static/media/Group 23.svg": "/alphabet-clash/static/media/Group 23.396bb2e923e56d13e5ba79fc3390e7e5.svg",
+    "static/media/monetization_on.svg": "/alphabet-clash/static/media/monetization_on.f0a9857acada700f4aa7f47739ebca81.svg",
+    "index.html": "/alphabet-clash/index.html",
+    "main.e628f417.css.map": "/alphabet-clash/static/css/main.e628f417.css.map",
+    "main.d7a06583.js.map": "/alphabet-clash/static/js/main.d7a06583.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.e628f417.css",
+    "static/js/main.d7a06583.js"
+  ]
+}
