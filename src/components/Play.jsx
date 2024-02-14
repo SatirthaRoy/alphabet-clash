@@ -1,7 +1,7 @@
-import React, { useEffect, useReducer, useRef, useState } from 'react'
+import React, { useEffect, useReducer } from 'react'
 import heart from '../alphabet-clash-pro-resources/images/Group 23.svg'
 import money from '../alphabet-clash-pro-resources/images/monetization_on.svg'
-import { type } from '@testing-library/user-event/dist/type';
+import Playagain from './Playagain'
 
 
 // random key generator
@@ -17,6 +17,7 @@ const Play = () => {
   const middleKeys = 'asdfghjkl'.split('');
   const downKeys = 'zxcvbnm/'.split('');
 
+  // Reducer hook
   const reducer = (state, action) => {
     switch(action.type) {
       case 'hurt':
@@ -40,6 +41,7 @@ const Play = () => {
     
   }
 
+  // useEffect hook
   useEffect(()=> {
     window.addEventListener('keyup', handler);
     return ()=> {
@@ -66,29 +68,33 @@ const Play = () => {
     </div>
   }
 
-  return (
-    <div onMouseOver={(e)=> {e.target.focus()}} className='w-screen h-screen flex flex-col items-center justify-center gap-8'>
-      {/* this is the screen */}
-      <div className='flex flex-col justify-start items-center max-w-5xl w-11/12 h-[300px] bg-[#FFFFFFB2] border-[#010313CC] border-[20px] rounded-2xl'>
-        <div className='bg-[#010313CC] poppin px-7 py-4 text-white text-base font-medium rounded-b-xl'>
-          Don't watch keyboard  while playing...
+  if(state.health > 0) {
+    return (
+      <div onMouseOver={(e)=> {e.target.focus()}} className='w-screen h-screen flex flex-col items-center justify-center gap-8'>
+        {/* this is the screen */}
+        <div className='flex flex-col justify-start items-center max-w-5xl w-11/12 h-[300px] bg-[#FFFFFFB2] border-[#010313CC] border-[20px] rounded-2xl'>
+          <div className='bg-[#010313CC] poppin px-7 pb-4 text-white text-base font-medium rounded-b-xl'>
+            Don't watch keyboard  while playing...
+          </div>
+          <div className='poppin mt-14 text-8xl font-semibold '>{state.ks}</div>
         </div>
-        <div className='poppin mt-14 text-8xl font-semibold '>{state.ks}</div>
+  
+        {/* here will be the keyboards */}
+        <div className=' flex flex-col items-center gap-2'>
+          {/* top row */}
+          <Keys a = {topKeys} k = {state.ks}/>
+          {/* middle row */}
+          <Keys a={middleKeys} k = {state.ks}/>
+          {/* bottom row */}
+          <Keys a = {downKeys} k = {state.ks}/>
+        </div>
+        {/* score and health */}
+        <ScoreAndLife/>
       </div>
-
-      {/* here will be the keyboards */}
-      <div className=' flex flex-col items-center gap-2'>
-        {/* top row */}
-        <Keys a = {topKeys} k = {state.ks}/>
-        {/* middle row */}
-        <Keys a={middleKeys} k = {state.ks}/>
-        {/* bottom row */}
-        <Keys a = {downKeys} k = {state.ks}/>
-      </div>
-      {/* score and health */}
-      <ScoreAndLife/>
-    </div>
-  )
+    )
+  } else {
+    return <Playagain score = {state.score}/>
+  }
 }
 
 export default Play
